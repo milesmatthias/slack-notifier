@@ -3,7 +3,7 @@ require File.expand_path( "../lib/slack-notifier/version", __FILE__ )
 Gem::Specification.new do |s|
 
   s.name          = 'slack-notifier'
-  s.version       = Slack::Notifier::VERSION
+  s.version       = SN::Notifier::VERSION
   s.platform      = Gem::Platform::RUBY
 
   s.summary       = 'A slim ruby wrapper for posting to slack webhooks'

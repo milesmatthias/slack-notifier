@@ -5,7 +5,7 @@ require 'json'
 require_relative 'slack-notifier/default_http_client'
 require_relative 'slack-notifier/link_formatter'
 
-module Slack
+module SN
   class Notifier
     attr_reader :endpoint, :default_payload
 

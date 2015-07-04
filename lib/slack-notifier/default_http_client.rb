@@ -1,4 +1,4 @@
-module Slack
+module SN
   class Notifier
 
     class DefaultHTTPClient

@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'spec_helper'
 
-describe Slack::Notifier::LinkFormatter do
+describe SN::Notifier::LinkFormatter do
 
   describe "::format" do
 

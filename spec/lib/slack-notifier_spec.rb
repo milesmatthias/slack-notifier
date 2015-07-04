@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Slack::Notifier do
+describe SN::Notifier do
   subject { described_class.new 'http://example.com' }
 
   describe "#initialize" do
@@ -22,11 +22,11 @@ describe Slack::Notifier do
 
   describe "#ping" do
     before :each do
-      allow( Slack::Notifier::DefaultHTTPClient ).to receive(:post)
+      allow( SN::Notifier::DefaultHTTPClient ).to receive(:post)
     end
 
     it "passes the message through LinkFormatter" do
-      expect( Slack::Notifier::LinkFormatter ).to receive(:format)
+      expect( SN::Notifier::LinkFormatter ).to receive(:format)
                                               .with("the message")
 
       described_class.new('http://example.com').ping "the message", channel: 'foo'
@@ -48,7 +48,7 @@ describe Slack::Notifier do
       end
 
       it "uses default channel" do
-        expect( Slack::Notifier::DefaultHTTPClient ).to receive(:post)
+        expect( SN::Notifier::DefaultHTTPClient ).to receive(:post)
                           .with @endpoint_double,
                                 payload: '{"channel":"#default","text":"the message"}'
 
@@ -56,7 +56,7 @@ describe Slack::Notifier do
       end
 
       it "allows override channel to be set" do
-        expect( Slack::Notifier::DefaultHTTPClient ).to receive(:post)
+        expect( SN::Notifier::DefaultHTTPClient ).to receive(:post)
                           .with @endpoint_double,
                                 payload: '{"channel":"new","text":"the message"}'
 
@@ -72,7 +72,7 @@ describe Slack::Notifier do
                       .with("http://example.com")
                       .and_return(@endpoint_double)
 
-          expect( Slack::Notifier::DefaultHTTPClient ).to receive(:post)
+          expect( SN::Notifier::DefaultHTTPClient ).to receive(:post)
                             .with @endpoint_double,
                                   payload: '{"channel":"channel","text":"the message"}'
 
